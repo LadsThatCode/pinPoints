@@ -17,6 +17,11 @@ export function Earth(props) {
 
   const earthRef = useRef();
   const cloudsRef = useRef();
+  let lat = 34.0522 * Math.PI / 180
+  let lng = 118.2437 * Math.PI / 180
+  let x = Math.cos(lng) * Math.sin(lat)
+  let y = Math.sin(lng) * Math.sin(lat)
+  let z = Math.cos(lat)
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
@@ -24,6 +29,7 @@ export function Earth(props) {
     earthRef.current.rotation.y = elapsedTime / 7.5;
     cloudsRef.current.rotation.y = elapsedTime / 6.5;
   });
+
 
   return (
     <>
@@ -47,6 +53,18 @@ export function Earth(props) {
           side={THREE.DoubleSide}
         />
       </mesh>
+
+
+      {/* <mesh position={[x, y, z]}>
+        <sphereBufferGeometry args={[0.03, 20, 20]} />
+        <meshBasicMaterial
+          attach="material"
+          color="#0xff0000"
+          opacity={0.5}
+          transparent
+        />
+      </mesh> */}
+
       <mesh ref={earthRef} position={[0, 0, 0]}>
         <sphereGeometry args={[1, 1150, 1150]} />
         <meshPhongMaterial specularMap={specularMap} />
@@ -64,6 +82,16 @@ export function Earth(props) {
           panSpeed={0.5}
           rotateSpeed={0.4}
         />
+        <mesh position={[x, y, z]}>
+          <sphereBufferGeometry args={[0.03, 20, 20]} />
+          <meshBasicMaterial
+            attach="material"
+            color="#0xff0000"
+            opacity={0.5}
+            transparent
+          />
+        </mesh>
+
       </mesh>
     </>
   );
