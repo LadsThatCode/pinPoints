@@ -13,15 +13,21 @@ export function Earth(props) {
   const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(
     TextureLoader,
     [EarthDayMap, EarthNormalMap, EarthSpecularMap, EarthCloudsMap]
-  );
-
+    );
+    
+    let lat = 90.0000
+    let lng = 45.0000
+  let radius = 1
   const earthRef = useRef();
   const cloudsRef = useRef();
-  let lat = 34.0522 * Math.PI / 180
-  let lng = 118.2437 * Math.PI / 180
-  let x = Math.cos(lng) * Math.sin(lat)
-  let y = Math.sin(lng) * Math.sin(lat)
-  let z = Math.cos(lat)
+  let phi = (90 - lat) * (Math.PI / 180);
+  let theta = (lng + 180) * (Math.PI / 180);
+  let x = -((radius) * Math.sin(phi) * Math.cos(theta));
+    let z = ((radius) * Math.sin(phi) * Math.sin(theta));
+    let y = ((radius) * Math.cos(phi));
+  // let x = Math.cos(lng) * Math.sin(lat)
+  // let y = Math.sin(lng) * Math.sin(lat)
+  // let z = Math.cos(lat)
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
@@ -55,16 +61,6 @@ export function Earth(props) {
       </mesh>
 
 
-      {/* <mesh position={[x, y, z]}>
-        <sphereBufferGeometry args={[0.03, 20, 20]} />
-        <meshBasicMaterial
-          attach="material"
-          color="#0xff0000"
-          opacity={0.5}
-          transparent
-        />
-      </mesh> */}
-
       <mesh ref={earthRef} position={[0, 0, 0]}>
         <sphereGeometry args={[1, 1150, 1150]} />
         <meshPhongMaterial specularMap={specularMap} />
@@ -83,10 +79,10 @@ export function Earth(props) {
           rotateSpeed={0.4}
         />
         <mesh position={[x, y, z]}>
-          <sphereBufferGeometry args={[0.03, 20, 20]} />
+          <sphereBufferGeometry args={[0.009, 30, 30]} />
           <meshBasicMaterial
             attach="material"
-            color="#0xff0000"
+            color='red'
             opacity={0.5}
             transparent
           />
