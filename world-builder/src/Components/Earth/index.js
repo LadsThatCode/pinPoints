@@ -1,8 +1,9 @@
 
-import React, { useRef } from "react";
-import { useFrame, useLoader } from "@react-three/fiber";
+import React, { useState, useRef, useEffect } from "react";
+import { useLoader, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import * as THREE from "three";
+
 
 import EarthDayMap from "../../assets/textures/8k_earth_daymap.jpg";
 import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
@@ -17,17 +18,39 @@ export function Earth(props) {
     [EarthDayMap, EarthNormalMap, EarthSpecularMap, EarthCloudsMap]
   );
 
-
+  const meshRef = useRef();
   const earthRef = useRef();
   const cloudsRef = useRef();
-  
-  
-  //! LAT AND LON INFO Two of the coordinates work out of the xyz and one doesnt, 
-  //TODO: TRY these coordinates to show proof of pevious comment 
-  //TODO: North Pole: 90.0000° N, 135.0000° W
-  //TODO: South Pole: 90.0000° S, 45.0000° E
-  //TODO: outside of the south west of africa: lat: 0°, lon: 0°
-  //! lat and lon anywhere near europe asia and africa work but the Americas/Hawai and south pole does not work.
+
+  //!! ONCLICK FOR PINPOINTS/ TOOLTIPS
+
+  const [showTooltip, setShowTooltip] = useState(false);
+  const tooltipRef = useRef(null);
+
+  const handleClick = () => {
+    setShowTooltip(!showTooltip);
+    console.log('Sphere clicked!');
+    showTooltip && (
+      <div ref={tooltipRef} className="tooltip">
+        This is the tooltip content
+      </div>
+    )
+  };
+  const handleOutsideClick = (event) => {
+    if (tooltipRef.current && !tooltipRef.current.contains(event.target)) {
+      setShowTooltip(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
+
 
 
   const locations = [
@@ -40,10 +63,6 @@ export function Earth(props) {
     // Add more locations here
   ];
 
-  // let lat = 27.9529744
-  // let lon = -82.4508736
-  // let radius = 1
-
 
   function getCoordinates(latitude, longitude, radius) {
     const phi = (90 - latitude) * Math.PI / 180;
@@ -54,32 +73,38 @@ export function Earth(props) {
     return [x, y, z];
   }
 
-
-
-  // let newLocationData = locations.map(location => {
-
-  //   let phi = (90 - location.latitude) * (Math.PI / 180);
-  //   let theta = (location.longitude + 180) * (Math.PI / 180);
-  //   let x = -((radius) * Math.sin(phi) * Math.cos(theta));
-  //   let z = ((radius) * Math.sin(phi) * Math.sin(theta));
-  //   let y = ((radius) * Math.cos(phi));
-  //   console.log({ x, y, z })
-  //   return { x, y, z }
-  // })
-  // console.log(newLocationData)
-
-
+  
+  
+  
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+    
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+  
   //! ROTATION FOR EARTH AND CLOUDS
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
 
-    earthRef.current.rotation.y = elapsedTime / 30.5;
-    cloudsRef.current.rotation.y = elapsedTime / 23.5;
+    earthRef.current.rotation.y = elapsedTime / 85.5;
+    cloudsRef.current.rotation.y = elapsedTime / 57.5;
   });
-
-  //! Rotational AMBIET LIGHTING
   return (
     <>
+
+      {/* <div>
+
+        {showTooltip && (
+          <div ref={tooltipRef} className="tooltip">
+            This is the tooltip content
+          </div>
+        )}
+
+      </div> */}
+      );
+      [//! Rotational AMBIET LIGHTING]
       <ambientLight intensity={.5} />
       <pointLight color="#f6f3ea" position={[10, 10, 0]} intensity={2.2} />
       <Stars
@@ -94,7 +119,6 @@ export function Earth(props) {
       [//! cloud mesh ]
 
       <mesh ref={cloudsRef} position={[0, 0, 0]}>
-
         <sphereGeometry args={[1.005, 1150, 1150]} />
         <meshPhongMaterial
           map={cloudsMap}
@@ -124,12 +148,18 @@ export function Earth(props) {
           panSpeed={0.5}
           rotateSpeed={0.4}
         />
+
+
         [//! Pin Point Mesh]
-
-
         {locations.map(location => (
-          <mesh key={location.name} position={getCoordinates(location.latitude, location.longitude, 1)}>
-            <sphereBufferGeometry args={[0.009, 30, 30]} />
+          <mesh
+            key={location.name}
+            position={getCoordinates(location.latitude, location.longitude, 1)}
+            {...props}
+            ref={meshRef}
+            onClick={handleClick}
+          >
+            <sphereGeometry args={[0.009, 30, 30]} />
             <meshBasicMaterial
               attach="material"
               color="red"
@@ -138,18 +168,8 @@ export function Earth(props) {
             />
           </mesh>
         ))}
-
-        {/* <mesh>
-            <sphereBufferGeometry args={[0.009, 30, 30]} />
-            <meshBasicMaterial
-              attach="material"
-              color='red'
-              opacity={0.5}
-              transparent
-            />
-          </mesh> */}
-
       </mesh>
     </>
   );
 }
+
