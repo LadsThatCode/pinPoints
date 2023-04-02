@@ -22,20 +22,17 @@ export function Earth(props) {
   const earthRef = useRef();
   const cloudsRef = useRef();
 
-  //!! ONCLICK FOR PINPOINTS/ TOOLTIPS
-
+  
   const [showTooltip, setShowTooltip] = useState(false);
   const tooltipRef = useRef(null);
-
+  
+  //!! ONCLICK FOR PINPOINTS/ToolTips (tool tips not functional)
   const handleClick = () => {
     setShowTooltip(!showTooltip);
     console.log('Sphere clicked!');
-    showTooltip && (
-      <div ref={tooltipRef} className="tooltip">
-        This is the tooltip content
-      </div>
-    )
   };
+
+
   const handleOutsideClick = (event) => {
     if (tooltipRef.current && !tooltipRef.current.contains(event.target)) {
       setShowTooltip(false);
@@ -51,7 +48,7 @@ export function Earth(props) {
   }, []);
 
 
-
+//! location list
 
   const locations = [
     { name: "tampa_Fl", latitude: 27.9506, longitude: -82.4572 },
@@ -63,6 +60,7 @@ export function Earth(props) {
     // Add more locations here
   ];
 
+  //! dynamically aquires sphere cordinates based on lat and negitive lon
 
   function getCoordinates(latitude, longitude, radius) {
     const phi = (90 - latitude) * Math.PI / 180;
@@ -75,15 +73,6 @@ export function Earth(props) {
 
   
   
-  
-  useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick);
-    
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
-  
   //! ROTATION FOR EARTH AND CLOUDS
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
@@ -94,16 +83,7 @@ export function Earth(props) {
   return (
     <>
 
-      {/* <div>
 
-        {showTooltip && (
-          <div ref={tooltipRef} className="tooltip">
-            This is the tooltip content
-          </div>
-        )}
-
-      </div> */}
-      );
       [//! Rotational AMBIET LIGHTING]
       <ambientLight intensity={.5} />
       <pointLight color="#f6f3ea" position={[10, 10, 0]} intensity={2.2} />
@@ -140,6 +120,8 @@ export function Earth(props) {
           metalness={0.4}
           roughness={0.7}
         />
+
+        [//! allows for user movement of the sphere]
         <OrbitControls
           enableZoom={true}
           enablePan={true}
