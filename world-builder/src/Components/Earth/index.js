@@ -1,7 +1,7 @@
 
-import React, { useRef,} from "react";
+import React, { useState, useRef, } from "react";
 import { useLoader, useFrame } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
+import { OrbitControls, Stars, Html } from "@react-three/drei";
 import * as THREE from "three";
 
 
@@ -22,17 +22,20 @@ export function Earth(props) {
   const earthRef = useRef();
   const cloudsRef = useRef();
 
-  
-  
-  //!! ONCLICK FOR PINPOINTS/ToolTips (tool tips not functional)
-  const handleClick = () => {
-    console.log('Sphere clicked!');
+
+
+  //!! ONCLICK FOR PINPOINTS
+  const [selectedLocation, setSelectedLocation] = useState(null);
+
+  const handleMeshClick = (location) => {
+    setSelectedLocation(location);
   };
+  console.log(selectedLocation)
 
 
 
 
-//! location list
+  //! location list
 
   const locations = [
     { name: "tampa_Fl", latitude: 27.9506, longitude: -82.4572 },
@@ -55,8 +58,8 @@ export function Earth(props) {
     return [x, y, z];
   }
 
-  
-  
+
+
   //! ROTATION FOR EARTH AND CLOUDS
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
@@ -123,7 +126,7 @@ export function Earth(props) {
             position={getCoordinates(location.latitude, location.longitude, 1)}
             {...props}
             ref={meshRef}
-            onClick={handleClick}
+            onClick={() => handleMeshClick(location)}
           >
             <sphereGeometry args={[0.009, 30, 30]} />
             <meshBasicMaterial
@@ -134,6 +137,14 @@ export function Earth(props) {
             />
           </mesh>
         ))}
+        {selectedLocation && (
+          <Html>
+            <div>
+              <h3>{selectedLocation.name}</h3>
+              {/* display other location data */}
+            </div>
+          </Html>
+        )}
       </mesh>
     </>
   );
