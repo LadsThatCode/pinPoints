@@ -27,7 +27,8 @@
   - As a hobbyist, I want to be able to explore and discover hidden gems and secret spots around the world, so that I can enrich my personal experiences and share them with others. With Pinpoint, I can use the 3D globe to search for interesting and offbeat locations, such as natural wonders, cultural festivals, culinary hotspots, and adventure sports. I can also save and share my favorite spots with other Pinpoint users, and discover new ones recommended by them. This makes my travel and leisure activities more exciting and meaningful.
 ## Domain Model
 
-![Domain Model](vscode-local:/c%3A/Users/17404/Pictures/Pinpoint/Domain%20Modeling.png)
+![Domain_modeling](https://user-images.githubusercontent.com/81731210/229601719-1c29cefe-c1b4-43f8-8bee-7dc8e9165ec7.png)
+
 
 ## Lighthouse Score
 
