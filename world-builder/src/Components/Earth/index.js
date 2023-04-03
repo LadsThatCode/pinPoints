@@ -1,5 +1,5 @@
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef,} from "react";
 import { useLoader, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import * as THREE from "three";
@@ -23,29 +23,13 @@ export function Earth(props) {
   const cloudsRef = useRef();
 
   
-  const [showTooltip, setShowTooltip] = useState(false);
-  const tooltipRef = useRef(null);
   
   //!! ONCLICK FOR PINPOINTS/ToolTips (tool tips not functional)
   const handleClick = () => {
-    setShowTooltip(!showTooltip);
     console.log('Sphere clicked!');
   };
 
 
-  const handleOutsideClick = (event) => {
-    if (tooltipRef.current && !tooltipRef.current.contains(event.target)) {
-      setShowTooltip(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick);
-
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
 
 
 //! location list
