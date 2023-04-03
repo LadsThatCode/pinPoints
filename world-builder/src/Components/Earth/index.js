@@ -3,7 +3,7 @@ import React, { useState, useRef, } from "react";
 import { useLoader, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars, Html } from "@react-three/drei";
 import * as THREE from "three";
-
+import './index.css'
 
 import EarthDayMap from "../../assets/textures/8k_earth_daymap.jpg";
 import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
@@ -38,12 +38,14 @@ export function Earth(props) {
   //! location list
 
   const locations = [
-    { name: "tampa_Fl", latitude: 27.9506, longitude: -82.4572 },
-    { name: "california_Us", latitude: 36.7783, longitude: -119.4179 },
-    { name: "yuma_Az", latitude: 32.6927, longitude: -114.6277 },
-    { name: "seattle_Wa", latitude: 47.6062, longitude: -122.3321 },
-    { name: "denver_Co", latitude: 39.7392, longitude: -104.9903 },
-    { name: "newYorkCity_Ny", latitude: 40.7128, longitude: -74.0060 },
+    { name: "Tampa Florida", latitude: 27.9506, longitude: -82.4572 },
+    // { name: "California", latitude: 36.7783, longitude: -119.4179 },
+    { name: "Yuma Arizona", latitude: 32.6927, longitude: -114.6277 },
+    { name: "Seattle Washington", latitude: 47.6062, longitude: -122.3321 },
+    { name: "Denver Colorado", latitude: 39.7392, longitude: -104.9903 },
+    { name: "New York City", latitude: 40.7128, longitude: -74.0060 },
+    { name: "San Diego", latitude: 32.7157, longitude: -117.1611 },
+    { name: "LA", latitude: 34.0522, longitude: -118.2437 },
     // Add more locations here
   ];
 
@@ -64,20 +66,20 @@ export function Earth(props) {
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
 
-    earthRef.current.rotation.y = elapsedTime / 85.5;
-    cloudsRef.current.rotation.y = elapsedTime / 57.5;
+    earthRef.current.rotation.y = elapsedTime / 95.5;
+    cloudsRef.current.rotation.y = elapsedTime / 67.5;
   });
   return (
     <>
 
 
-      [//! Rotational AMBIET LIGHTING]
+      [//! Rotational AMBIET LIGHTING AND STARS]
       <ambientLight intensity={.5} />
       <pointLight color="#f6f3ea" position={[10, 10, 0]} intensity={2.2} />
       <Stars
         radius={300}
         depth={60}
-        count={20000}
+        count={35000}
         factor={7}
         saturation={0}
         fade={true}
@@ -95,7 +97,6 @@ export function Earth(props) {
           side={THREE.DoubleSide}
         />
       </mesh>
-
       [//! Sphere mesh]
 
       <mesh ref={earthRef} position={[0, 0, 0]}>
@@ -132,17 +133,32 @@ export function Earth(props) {
             <meshBasicMaterial
               attach="material"
               color="red"
-              opacity={0.5}
+              opacity={.7}
               transparent
             />
           </mesh>
         ))}
         {selectedLocation && (
           <Html>
-            <div>
+            <section id="locationContainer">
+            <div id="locationInfo">
               <h3>{selectedLocation.name}</h3>
+              <p>Hello this is so cool wow!</p>
+              <p>this is the third p tag!</p>
+              <p>and this is the Fourth!</p>
+              <p>just testing what tons of data would look like. how about we try some lipsum kdsjhbvkjhberdfkjgvbhndjkfnbvjkdnfvjkfdnvjdfknvdfjknvfjkdnvfdkjnvdfkjhzbjhzbhjasdasdasdasdasdasdsadasdasdasdsaddasdasddddddddddd</p>
+              <p>some words</p>
+              <p>some words</p>
+              <p>some words</p>
+              <p>some words</p>
+              <p>some words</p>
+              <p>some words</p>
+              <p>some words</p>
+              <p>some words</p>
+              <p>some words</p>
               {/* display other location data */}
             </div>
+            </section>
           </Html>
         )}
       </mesh>
