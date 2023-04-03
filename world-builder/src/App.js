@@ -8,6 +8,8 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import Login from "./Login";
+import Logout from "./Logout";
 
 const CanvasContainer = styled.div`
   // width: 100;
