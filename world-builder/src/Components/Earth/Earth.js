@@ -3,8 +3,7 @@ import React, { useState, useRef, } from "react";
 import { useLoader, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars, Html } from "@react-three/drei";
 import * as THREE from "three";
-import './index.css'
-
+import './Earth.css'
 import EarthDayMap from "../../assets/textures/8k_earth_daymap.jpg";
 import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
 import EarthSpecularMap from "../../assets/textures/8k_earth_specular_map.jpg";
@@ -21,7 +20,6 @@ export function Earth(props) {
   const meshRef = useRef();
   const earthRef = useRef();
   const cloudsRef = useRef();
-
 
 
   //!! ONCLICK FOR PINPOINTS

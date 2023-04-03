@@ -2,7 +2,7 @@ import "./App.css";
 import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
-import { Earth } from "./Components/Earth/index.js";
+import { Earth } from "./Components/Earth/Earth.js";
 import {
   BrowserRouter as Router,
   Routes,
