@@ -8,9 +8,12 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Login from "./Login";
-import Logout from "./Logout";
+import Landing from "./Components/Earth/Landing.js";
+import Header from "./Header";
+
 import Profile from "./Profile";
+
+
 
 const CanvasContainer = styled.div`
   // width: 100;
@@ -18,10 +21,17 @@ const CanvasContainer = styled.div`
 `;
 
 class App extends React.Component {
-  return() {
+  render() {
     return (
       <Router>
+        <Header />
+ 
+        <Profile />
         <Routes>
+          <Route
+            exact path="/"
+            element={<Landing />}>
+          </Route>
           <Route
             exact path="/planet"
             element={<CanvasContainer>
