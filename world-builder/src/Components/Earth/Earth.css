@@ -1,14 +1,7 @@
 html {
 }
 
-header{
-  background-color: white;
-  height: 60px;
-  position: absolute;
-  top: -696px;
-  left: -1440px;
-  width: 2878px
-}
+
 
 #locationInfo{
   background-color: #f2f2f2;
