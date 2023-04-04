@@ -9,9 +9,9 @@ import {
   Route
 } from "react-router-dom";
 import Landing from "./Components/Earth/Landing.js";
-import Header from "./Header";
+import Header from "./Components/Earth/Header";
 
-import Profile from "./Profile";
+import Profile from "./Components/Earth/Profile";
 
 
 
