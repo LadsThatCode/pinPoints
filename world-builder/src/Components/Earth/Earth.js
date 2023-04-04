@@ -11,6 +11,8 @@ import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.jpg";
 import { TextureLoader } from "three";
 import axios from 'axios'
 
+
+
 export function Earth(props) {
   //! image loading 
   const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(
@@ -49,23 +51,7 @@ export function Earth(props) {
   }
 
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    let searchObj = {
-      name: String,
-      state: String,
-      country: String,
-      formatted_address: String,
-      current_time: String,
-      places_of_interest: Array,
-      photo_url: String,
-      lat: Number,
-      lng: Number,
-    }
-    postLocation(searchObj)
-  }
-
-  getLocation = async () => {
+  const getLocation = async () => {
     try {
       let url = `${process.env.REACT_APP_SERVER}/search`
       let locationData = await axios.get(url)
@@ -75,8 +61,9 @@ export function Earth(props) {
     catch (error) {
       console.log(error.response)
     }
+  }
 
-    deleteLocation = async (id) => {
+   const deleteLocation = async (id) => {
       try {
         let url = `${process.env.REACT_APP_SERVER}/search/${id}`
 
@@ -102,11 +89,6 @@ export function Earth(props) {
     console.log(selectedLocation)
 
 
-
-    //! location list
-
-
-
     //! dynamically aquires sphere cordinates based on lat and negitive lon
 
     function getCoordinates(latitude, longitude, radius) {
@@ -117,11 +99,6 @@ export function Earth(props) {
       const z = radius * Math.sin(phi) * Math.sin(theta);
       return [x, y, z];
     }
-
-
-
-
-
 
 
 
@@ -181,9 +158,7 @@ export function Earth(props) {
             panSpeed={0.5}
             rotateSpeed={0.4}
           />
-          <Html>
-            <header>hey</header>
-          </Html>
+          
 
           [//! Pin Point Mesh]
           {locations.map(location => (
