@@ -9,9 +9,10 @@ import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
 import EarthSpecularMap from "../../assets/textures/8k_earth_specular_map.jpg";
 import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.jpg";
 import { TextureLoader } from "three";
+import axios from 'axios'
 
-//! image loading 
 export function Earth(props) {
+  //! image loading 
   const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(
     TextureLoader,
     [EarthDayMap, EarthNormalMap, EarthSpecularMap, EarthCloudsMap]
@@ -20,6 +21,58 @@ export function Earth(props) {
   const meshRef = useRef();
   const earthRef = useRef();
   const cloudsRef = useRef();
+  const [locations, setLocations] = useState([
+
+    { name: "Tampa Florida", latitude: 27.9506, longitude: -82.4572 },
+    // { name: "California", latitude: 36.7783, longitude: -119.4179 },
+    { name: "Yuma Arizona", latitude: 32.6927, longitude: -114.6277 },
+    { name: "Seattle Washington", latitude: 47.6062, longitude: -122.3321 },
+    { name: "Denver Colorado", latitude: 39.7392, longitude: -104.9903 },
+    { name: "New York City", latitude: 40.7128, longitude: -74.0060 },
+    { name: "San Diego", latitude: 32.7157, longitude: -117.1611 },
+    { name: "LA", latitude: 34.0522, longitude: -118.2437 },
+    // Add more locations here
+
+  ])
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    let searchObj = {
+      name: 'placeHolder',
+      latitude: 'placeHolder',
+      longitude: 'longitude'
+    }
+    this.postSearch(searchObj)
+  }
+
+  // getLocation = async () => {
+  //   try {
+  //     let url = `${process.env.REACT_APP_SERVER}/search`
+  //     let locationData = await axios.get(url)
+  //     console.log(locationData)
+  //     location = useState()
+  //   }
+  //   catch (error){
+  // console.log(error.response)
+  // }
+
+  const postLocation = async (LocationObj) => {
+    try {
+      let url = `${process.env.REACT_APP_SERVER}/search`
+
+      let createdSearch = await axios.post(url, LocationObj);
+
+      const addLocation = (newLocation) => {
+        setLocations([...locations, newLocation.data])
+      }
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+
+
+
 
 
   //!! ONCLICK FOR PINPOINTS
@@ -32,20 +85,9 @@ export function Earth(props) {
 
 
 
-
   //! location list
 
-  const locations = [
-    { name: "Tampa Florida", latitude: 27.9506, longitude: -82.4572 },
-    // { name: "California", latitude: 36.7783, longitude: -119.4179 },
-    { name: "Yuma Arizona", latitude: 32.6927, longitude: -114.6277 },
-    { name: "Seattle Washington", latitude: 47.6062, longitude: -122.3321 },
-    { name: "Denver Colorado", latitude: 39.7392, longitude: -104.9903 },
-    { name: "New York City", latitude: 40.7128, longitude: -74.0060 },
-    { name: "San Diego", latitude: 32.7157, longitude: -117.1611 },
-    { name: "LA", latitude: 34.0522, longitude: -118.2437 },
-    // Add more locations here
-  ];
+
 
   //! dynamically aquires sphere cordinates based on lat and negitive lon
 
@@ -57,6 +99,11 @@ export function Earth(props) {
     const z = radius * Math.sin(phi) * Math.sin(theta);
     return [x, y, z];
   }
+
+
+
+
+
 
 
 
@@ -116,7 +163,9 @@ export function Earth(props) {
           panSpeed={0.5}
           rotateSpeed={0.4}
         />
-
+        <Html>
+          <header>hey</header>
+        </Html>
 
         [//! Pin Point Mesh]
         {locations.map(location => (
@@ -138,24 +187,26 @@ export function Earth(props) {
         ))}
         {selectedLocation && (
           <Html>
+
             <section id="locationContainer">
-            <div id="locationInfo">
-              <h3>{selectedLocation.name}</h3>
-              <p>Hello this is so cool wow!</p>
-              <p>this is the third p tag!</p>
-              <p>and this is the Fourth!</p>
-              <p>just testing what tons of data would look like. how about we try some lipsum kdsjhbvkjhberdfkjgvbhndjkfnbvjkdnfvjkfdnvjdfknvdfjknvfjkdnvfdkjnvdfkjhzbjhzbhjasdasdasdasdasdasdsadasdasdasdsaddasdasddddddddddd</p>
-              <p>some words</p>
-              <p>some words</p>
-              <p>some words</p>
-              <p>some words</p>
-              <p>some words</p>
-              <p>some words</p>
-              <p>some words</p>
-              <p>some words</p>
-              <p>some words</p>
-              {/* display other location data */}
-            </div>
+              <div id="locationInfo">
+                <h3 id="pinName">{selectedLocation.name}</h3>
+                <p>Hello this is so cool wow!</p>
+                <p>this is the third p tag!</p>
+                <p>and this is the Fourth!</p>
+                <p>just testing what tons of data would look like. how about we try some lipsum kdsjhbvkjhberdfkjgvbhndjkfnbvjkdnfvjkfdnvjdfknvdfjknvfjkdnvfdkjnvdfkjhzbjhzbhjasdasdasdasdasdasdsadasdasdasdsaddasdasddddddddddd</p>
+                <p>some words</p>
+                <p>some words</p>
+                <p>some words</p>
+                <p>some words</p>
+                <p>some words</p>
+                <p>some words</p>
+                <p>some words</p>
+                <p>some words</p>
+                <p>some words</p>
+
+                {/* display other location data */}
+              </div>
             </section>
           </Html>
         )}
@@ -163,4 +214,5 @@ export function Earth(props) {
     </>
   );
 }
+
 
