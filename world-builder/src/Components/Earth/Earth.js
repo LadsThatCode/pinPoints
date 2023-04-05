@@ -11,6 +11,8 @@ import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.jpg";
 import { TextureLoader } from "three";
 import axios from 'axios';
 import SearchBar from './SearchBar';
+
+
 export function Earth(props) {
   //! image loading 
   const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(
@@ -112,7 +114,9 @@ export function Earth(props) {
       <>
         [//! handles search bar]
         <Html>
-        <SearchBar onSearch={postLocation}/>
+          <div id='SearchBar'>
+        <SearchBar  onSearch={postLocation}/>
+        </div>
         </Html>
         [//! Rotational AMBIET LIGHTING AND STARS]
         <ambientLight intensity={.5} />
