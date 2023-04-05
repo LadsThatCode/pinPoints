@@ -10,18 +10,19 @@ import {
 } from "react-router-dom";
 import Landing from "./Landing.js";
 import Header from "./Components/Earth/Header";
-
 import Profile from "./Components/Earth/Profile";
 
 
 
 const CanvasContainer = styled.div`
-  // 
+
+  
   position: absolute;
   top: 0;
   left:0;
   width: 206vh;
   height: 100svh;
+
 `;
 
 class App extends React.Component {
@@ -29,7 +30,6 @@ class App extends React.Component {
     return (
       <Router>
         <Header />
- 
         <Profile />
         <Routes>
           <Route
