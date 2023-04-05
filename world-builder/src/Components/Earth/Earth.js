@@ -9,10 +9,8 @@ import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
 import EarthSpecularMap from "../../assets/textures/8k_earth_specular_map.jpg";
 import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.jpg";
 import { TextureLoader } from "three";
-import axios from 'axios'
-
-
-
+import axios from 'axios';
+import SearchBar from './SearchBar';
 export function Earth(props) {
   //! image loading 
   const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(
@@ -49,6 +47,7 @@ export function Earth(props) {
       console.log(error.message)
     }
   }
+
 
 
   const getLocation = async () => {
@@ -111,8 +110,10 @@ export function Earth(props) {
     });
     return (
       <>
-
-
+        [//! handles search bar]
+        <Html>
+        <SearchBar onSearch={postLocation}/>
+        </Html>
         [//! Rotational AMBIET LIGHTING AND STARS]
         <ambientLight intensity={.5} />
         <pointLight color="#f6f3ea" position={[10, 10, 0]} intensity={2.2} />

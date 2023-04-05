@@ -21,12 +21,6 @@ class Header extends React.Component {
 
         <NavItem><Link to="/planet" className="nav-link"><Button>Pinpoint</Button></Link></NavItem>
 
-        <NavItem>
-
-        <TextField id="outlined-basic" label="Enter Location" variant="outlined" />
-        <Button variant="contained">Contained</Button>
-
-        </NavItem>
       </Navbar>
                 
     )
