@@ -8,7 +8,9 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Landing from "./Landing.js";
+
+import Landing from "../Landing.js";
+
 import Header from "./Components/Earth/Header";
 
 import Profile from "./Components/Earth/Profile";
