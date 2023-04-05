@@ -10,7 +10,6 @@ import {
 } from "react-router-dom";
 import Landing from "./Components/Earth/Landing.js";
 import Header from "./Components/Earth/Header";
-import SearchBar from './Components/Earth/SearchBar.js'
 import Profile from "./Components/Earth/Profile";
 
 
