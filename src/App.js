@@ -34,7 +34,7 @@ class App extends React.Component {
             element={<Landing />}>
           </Route>
           <Route
-            exact path="/planet"
+            exact path="/search"
             element={<CanvasContainer>
               <Canvas>
                 <Suspense fallback={null}>

@@ -23,8 +23,8 @@ const handleSubmit = (e) => {
 
 return(
   <section>
-  <TextField id="outlined-basic" label="Enter Location" variant="outlined" />
-  <Button variant="contained">Contained</Button> 
+  <TextField onChange={handleInputChange} id="outlined-basic" label="Enter Location" variant="outlined" />
+  <Button onSubmit={handleSubmit} variant="contained">Enter</Button> 
   </section>
 );
 };

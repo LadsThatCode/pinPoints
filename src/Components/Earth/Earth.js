@@ -1,5 +1,5 @@
 
-import React, { useState, useRef, } from "react";
+import React, { useState, useRef, useEffect, } from "react";
 import { useLoader, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars, Html } from "@react-three/drei";
 import * as THREE from "three";
@@ -11,6 +11,7 @@ import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.jpg";
 import { TextureLoader } from "three";
 import axios from 'axios';
 import SearchBar from './SearchBar';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 export function Earth(props) {
@@ -26,7 +27,6 @@ export function Earth(props) {
   const [locations, setLocations] = useState([
 
     { name: "Tampa Florida", latitude: 27.9506, longitude: -82.4572 },
-    // { name: "California", latitude: 36.7783, longitude: -119.4179 },
     { name: "Yuma Arizona", latitude: 32.6927, longitude: -114.6277 },
     { name: "Seattle Washington", latitude: 47.6062, longitude: -122.3321 },
     { name: "Denver Colorado", latitude: 39.7392, longitude: -104.9903 },
@@ -36,43 +36,72 @@ export function Earth(props) {
     // Add more locations here
 
   ])
-
-  const postLocation = async (LocationObj) => {
-    try {
-      let url = `${process.env.REACT_APP_SERVER}/search`
-
-      let newLocation = await axios.post(url, LocationObj);
-
-      setLocations([...locations, newLocation.data])
-
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
+  const { isAuthenticated, getIdTokenClaims } = useAuth0();
 
 
-
-  const getLocation = async () => {
-    try {
-      let url = `${process.env.REACT_APP_SERVER}/search`
-      let locationData = await axios.get(url)
-      console.log(locationData)
-      setLocations(locationData.data)
-    }
-    catch (error) {
-      console.log(error.response)
-    }
-  }
-
-   const deleteLocation = async (id) => {
-      try {
-        let url = `${process.env.REACT_APP_SERVER}/search/${id}`
-
-        await axios.delete(url);
-
-        let updatedSearch = setLocations().filter(location => location._id !== id);
-        setLocations(updatedSearch)
+ const getLocation = useEffect(() => {
+    const fetchData = async () => {
+      if (isAuthenticated) {
+        const res = await getIdTokenClaims();
+        const jwt = res.__raw;
+        console.log('token: ', jwt);
+  
+        const config = {
+          headers: { "Authorization": `Bearer ${jwt}` },
+          method: 'get',
+          baseURL: process.env.REACT_APP_SERVER,
+          url: '/search'
+        };
+  
+        try {
+          const response = await axios(config);
+          setLocations(response.data.data);
+        } catch (error) {
+          console.error(error);
+        }
       }
+    }
+    fetchData();
+  }, [isAuthenticated, getIdTokenClaims]);
+
+
+
+  const handleSearchPost = async (searchObj) => {
+    if (isAuthenticated) {
+      const res = await getIdTokenClaims();
+      const jwt = res.__raw;
+      console.log('token: ', jwt);
+
+      const config = {
+        headers: { "Authorization": `Bearer ${jwt}` },
+        method: 'post',
+        baseURL: process.env.REACT_APP_SERVER,
+        url: '/search',
+        data: searchObj
+      };
+
+      try {
+        const response = await axios(config);
+        setLocations([...locations, response.data]);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
+
+
+  
+  const deleteLocation = async (id) => {
+        try {
+          let url = `${process.env.REACT_APP_SERVER}/search/${id}`
+  
+          await axios.delete(url);
+  
+          let updatedSearch = locations.filter(location => location._id !== id);
+          setLocations(updatedSearch)
+        }
+
 
       catch (error) {
         console.log(error.response)
@@ -115,7 +144,7 @@ export function Earth(props) {
         [//! handles search bar]
         <Html>
           <div id='SearchBar'>
-        <SearchBar  onSearch={postLocation}/>
+        <SearchBar  onSearch={getLocation}/>
         </div>
         </Html>
         [//! Rotational AMBIET LIGHTING AND STARS]

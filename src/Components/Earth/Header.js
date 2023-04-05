@@ -18,7 +18,7 @@ class Header extends React.Component {
 
         <NavItem><Link to="/" className="nav-link"><Button>Home</Button></Link></NavItem>
 
-        <NavItem><Link to="/planet" className="nav-link"><Button>Pinpoint</Button></Link></NavItem>
+        <NavItem><Link to="/search" className="nav-link"><Button>Pinpoint</Button></Link></NavItem>
 
         <Profile />
       </Navbar>
