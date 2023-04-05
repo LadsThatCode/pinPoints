@@ -8,15 +8,21 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Landing from "./Components/Earth/Landing.js";
+import Landing from "./Landing.js";
 import Header from "./Components/Earth/Header";
 import Profile from "./Components/Earth/Profile";
 
 
 
 const CanvasContainer = styled.div`
-  // width: 100;
-  height: 96svh;
+
+  
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 206vh;
+  height: 100svh;
+
 `;
 
 class App extends React.Component {
