@@ -1,13 +1,13 @@
 import React from "react";
 import { Component } from "react";
+import "./About.css"
 
 
 
 class About extends Component {
   
   render() {
-    /* TODO: render information about the developers */
-    return <p>Authors: Andrew Vreeland, Logan Reese, Chris Foster and Davey 'Crockett' Oswald</p>
+    return <p id="aboutp">Authors: Andrew Vreeland, Logan Reese, Chris Foster and Davey 'Crockett' Oswald</p>
     
     
   }

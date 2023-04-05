@@ -2,6 +2,7 @@ import React from "react";
 import {Stack} from 'react-bootstrap/';
 import Login from "./Components/Earth/Login";
 import Logout from "./Components/Earth/Logout.js";
+import "./Landing.css";
 
 
 
@@ -12,9 +13,9 @@ class Landing extends React.Component {
 
 
 
+          <div className="circle"></div>
         <div className="container">
         <Stack direction="horizontal" gap={3}>
-          <div className="circle"></div>
           <div className="content-left">
 
             <h2 className="landingpageH2">Left Content</h2>

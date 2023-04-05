@@ -1,5 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
+import "./Profile.css"
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -10,10 +11,14 @@ const Profile = () => {
 
   return (
     isAuthenticated && (
-      <div>
-        <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
+      <div className="profile">
+        <div id="imagecontainer">
+          <img id="userpicture" src={user.picture} />
+        </div>
+        <div id="usertextcontainer">
+          <h2 id="profileH2">{user.name}</h2>
+          <p id="profileP">{user.email}</p>
+        </div>
       </div>
     )
   );

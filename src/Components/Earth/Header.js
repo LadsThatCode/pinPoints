@@ -6,7 +6,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-
+import Profile from "./Profile";
 
 class Header extends React.Component {
   render() {
@@ -20,6 +20,7 @@ class Header extends React.Component {
 
         <NavItem><Link to="/planet" className="nav-link"><Button>Pinpoint</Button></Link></NavItem>
 
+        <Profile />
       </Navbar>
                 
     )
