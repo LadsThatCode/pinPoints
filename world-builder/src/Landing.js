@@ -1,7 +1,7 @@
 import React from "react";
 import {Stack} from 'react-bootstrap/';
-import Login from "./Login";
-import Logout from "./Logout";
+import Login from "./Components/Earth/Login";
+import Logout from "./Components/Earth/Logout";
 
 
 
