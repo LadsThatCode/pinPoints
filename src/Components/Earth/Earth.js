@@ -39,7 +39,7 @@ export function Earth(props) {
   const { isAuthenticated, getIdTokenClaims } = useAuth0();
 
 
- const getLocation = useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       if (isAuthenticated) {
         const res = await getIdTokenClaims();
@@ -66,7 +66,8 @@ export function Earth(props) {
 
 
 
-  const handleSearchPost = async (searchObj) => {
+  const handleSearchPost = async (searchInput) => {
+    console.log(`I am the search Obj ${searchInput}`)
     if (isAuthenticated) {
       const res = await getIdTokenClaims();
       const jwt = res.__raw;
@@ -77,11 +78,12 @@ export function Earth(props) {
         method: 'post',
         baseURL: process.env.REACT_APP_SERVER,
         url: '/search',
-        data: searchObj
+        data: searchInput
       };
 
       try {
         const response = await axios(config);
+        console.log(response)
         setLocations([...locations, response.data]);
       } catch (error) {
         console.error(error);
@@ -144,7 +146,7 @@ export function Earth(props) {
         [//! handles search bar]
         <Html>
           <div id='SearchBar'>
-        <SearchBar  onSearch={getLocation}/>
+        <SearchBar  onSearch={handleSearchPost}/>
         </div>
         </Html>
         [//! Rotational AMBIET LIGHTING AND STARS]
