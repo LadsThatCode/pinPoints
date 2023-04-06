@@ -17,7 +17,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-
+import './Header.js'
 
 export function Earth(props) {
   //! image loading 
@@ -31,18 +31,19 @@ export function Earth(props) {
   const cloudsRef = useRef();
   const [locations, setLocations] = useState([
 
-    { name: "Tampa Florida", latitude: 27.9506, longitude: -82.4572 },
-    { name: "Yuma Arizona", latitude: 32.6927, longitude: -114.6277 },
-    { name: "Seattle Washington", latitude: 47.6062, longitude: -122.3321 },
-    { name: "Denver Colorado", latitude: 39.7392, longitude: -104.9903 },
-    { name: "New York City", latitude: 40.7128, longitude: -74.0060 },
-    { name: "San Diego", latitude: 32.7157, longitude: -117.1611 },
-    { name: "LA", latitude: 34.0522, longitude: -118.2437 },
+    { city: "Tampa Florida", lat: 27.9506, lng: -82.4572},
+    // { city: "Yuma Arizona", lat: 32.6927, lng: -114.6277 },
+    // { city: "Seattle Washington", lat: 47.6062, lng: -122.3321 },
+    // { city: "Denver Colorado", lat: 39.7392, lng: -104.9903 },
+    // { city: "New York City", lat: 40.7128, lng: -74.0060 },
+    // { city: "San Diego", lat: 32.7157, lng: -117.1611 },
+    // { city: "LA", lat: 34.0522, lng: -118.2437 },
     // Add more locations here
 
   ])
-  const { isAuthenticated, getIdTokenClaims } = useAuth0();
   console.log(locations);
+
+  const { isAuthenticated, getIdTokenClaims } = useAuth0();
   useEffect(() => {
     const fetchData = async () => {
       if (isAuthenticated) {
@@ -152,9 +153,9 @@ export function Earth(props) {
       <>
         [//! handles search bar]
         <Html>
-          <div id='SearchBar'>
-        <SearchBar  onSearch={handleSearchPost}/>
-        </div>
+         
+        <SearchBar id='searchBar' onSearch={handleSearchPost}/>
+        
         </Html>
         [//! Rotational AMBIET LIGHTING AND STARS]
         <ambientLight intensity={.5} />
@@ -207,7 +208,7 @@ export function Earth(props) {
           {locations.map(location => (
             <mesh
               key={location.name}
-              position={getCoordinates(location.latitude, location.longitude, 1)}
+              position={getCoordinates(location.lat, location.lng, 1)}
               {...props}
               ref={meshRef}
               onClick={() => handleMeshClick(location)}

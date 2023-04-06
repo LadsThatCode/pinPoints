@@ -3,6 +3,11 @@ html {
 
 
 
+#searchBar{
+margin-top: -730px;
+z-index: 1;
+}
+
 #locationInfo{
   background-color: #f2f2f2;
   padding: 20px;
