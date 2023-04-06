@@ -1,0 +1,27 @@
+#aboutp {
+  color: aliceblue;
+  background-color: royalblue;
+}
+
+.text-field {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height:100%
+}
+
+.text-field input[type="text"] {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.team-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}

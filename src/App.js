@@ -8,12 +8,10 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-
-import Landing from "../Landing.js";
-
+import Landing from "./Landing.js";
 import Header from "./Components/Earth/Header";
+import About from "./About.js";
 
-import Profile from "./Components/Earth/Profile";
 
 
 
@@ -27,15 +25,16 @@ class App extends React.Component {
     return (
       <Router>
         <Header />
- 
-        <Profile />
+
+
         <Routes>
+          <Route exact path="/about" element={<About />} />
           <Route
             exact path="/"
             element={<Landing />}>
           </Route>
           <Route
-            exact path="/planet"
+            exact path="/search"
             element={<CanvasContainer>
               <Canvas>
                 <Suspense fallback={null}>
