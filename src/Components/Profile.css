@@ -1,0 +1,28 @@
+.profile {
+ display: flex;
+ justify-content: flex-end;
+ border: 5px solid green;
+}
+
+#userpicture {
+  height: 50px;
+  margin-left: 15%;
+  border-color: red;
+}
+
+#usertextcontainer {
+  margin-left: 5%;
+  font-size :small;
+}
+#profileH2 {
+  margin-bottom: 0px ;
+  width: max-content;
+  border: 1px solid green;
+  
+}
+/* #imagecontainer{} */
+#profileP{
+  display: block;
+  margin-bottom: 0px ;
+  border: 1px solid green;
+}
