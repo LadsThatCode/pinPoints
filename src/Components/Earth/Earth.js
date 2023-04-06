@@ -31,7 +31,7 @@ export function Earth(props) {
   const earthRef = useRef();
   const cloudsRef = useRef();
   const [showModal, setShowModal] = useState(false);
-  const { isAuthenticated,  getIdTokenClaims } = useAuth0();
+  const { isAuthenticated, getIdTokenClaims } = useAuth0();
   const [selectedLocation, setSelectedLocation] = useState(null);
 
   const [locations, setLocations] = useState([
@@ -210,6 +210,13 @@ export function Earth(props) {
   });
   return (
     <>
+      <Html>
+        <LocationForm
+          showModal={setShowModal}
+          updateLocation={updateLocation}
+          handleCloseModal={handleCloseModal}
+        />
+      </Html>
 
       [//! handles search bar]
       <Html>
@@ -302,14 +309,10 @@ export function Earth(props) {
                 <p>some words</p>
                 <p>some words</p>
                 <p>some words</p>
-                {/* <LocationForm
-                  showModal={setShowModal}
-                  updateLocation={updateLocation}
-                  handleCloseModal={handleCloseModal}
-                /> */}
-                { <Button onClick={handleOpenModal}>Add New Location</Button> }
-                { <Button>Update location</Button> }
-                <Button onClick={()=>{deleteLocation(selectedLocation._id)}}>Delete</Button>
+
+                {<Button onClick={handleOpenModal}>Add New Location</Button>}
+                {<Button>Update location</Button>}
+                <Button onClick={() => { deleteLocation(selectedLocation._id) }}>Delete</Button>
 
                 {/* display other location data */}
               </div>
