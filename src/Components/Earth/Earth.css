@@ -34,5 +34,5 @@ html {
 #locationContainer{
   display: flex;
   word-wrap: break-word;
-  
+  height: 0px;
 }

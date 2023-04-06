@@ -12,6 +12,11 @@ import { TextureLoader } from "three";
 import axios from 'axios';
 import SearchBar from './SearchBar';
 import { useAuth0 } from '@auth0/auth0-react';
+import Button from '@mui/material/Button'
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 
 export function Earth(props) {
@@ -37,8 +42,7 @@ export function Earth(props) {
 
   ])
   const { isAuthenticated, getIdTokenClaims } = useAuth0();
-
-
+  console.log(locations);
   useEffect(() => {
     const fetchData = async () => {
       if (isAuthenticated) {
@@ -48,14 +52,15 @@ export function Earth(props) {
   
         const config = {
           headers: { "Authorization": `Bearer ${jwt}` },
-          method: 'get',
+          method: 'post',
           baseURL: process.env.REACT_APP_SERVER,
           url: '/search'
         };
   
         try {
           const response = await axios(config);
-          setLocations(response.data.data);
+          // setLocations(response.data.data);
+
         } catch (error) {
           console.error(error);
         }
@@ -66,8 +71,9 @@ export function Earth(props) {
 
 
 
-  const handleSearchPost = async (searchInput) => {
-    console.log(`I am the search Obj ${searchInput}`)
+  const handleSearchPost = async (searchObj) => {
+    console.log(`I am the search Obj ${searchObj}`)
+    console.log('not logged in user')
     if (isAuthenticated) {
       const res = await getIdTokenClaims();
       const jwt = res.__raw;
@@ -75,15 +81,15 @@ export function Earth(props) {
 
       const config = {
         headers: { "Authorization": `Bearer ${jwt}` },
-        method: 'post',
+        method: 'get',
         baseURL: process.env.REACT_APP_SERVER,
-        url: '/search',
-        data: searchInput
+        url: `/search?city=${searchObj}`,
+        // data: searchObj
       };
 
       try {
         const response = await axios(config);
-        console.log(response)
+        console.log(response.data);
         setLocations([...locations, response.data]);
       } catch (error) {
         console.error(error);
@@ -110,6 +116,7 @@ export function Earth(props) {
       }
     }
 
+    
 
 
     //!! ONCLICK FOR PINPOINTS
@@ -233,6 +240,7 @@ export function Earth(props) {
                   <p>some words</p>
                   <p>some words</p>
                   <p>some words</p>
+                  <Button onClick={deleteLocation}>Delete</Button>
 
                   {/* display other location data */}
                 </div>
