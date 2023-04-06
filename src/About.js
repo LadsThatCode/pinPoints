@@ -10,15 +10,11 @@ import Typography from '@mui/material/Typography';
 
 
 
+
 export default function About() {
   return (
 
     <div className="team-container">
-      <div class="text-field">
-        <input type="text" placeholder="This app was built on the idea of boredom when visiting a location on planet Earth. Ideally you should be able to enter in a location and have our threejs rendered Earth populate a 'pinpoint'. Future updates hope to enable clicking on Earth at any point to render data." />
-      </div>
-
-
       <Card sx={{ maxWidth: 350 }}>
         <CardMedia
           sx={{ height: 450 }}

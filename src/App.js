@@ -9,8 +9,9 @@ import {
   Route
 } from "react-router-dom";
 import Landing from "./Landing.js";
-import Header from "./Components/Earth/Header";
+import Header from "./Components/Header";
 import About from "./About.js";
+// import Container from 'react-bootstrap/Container';
 
 
 

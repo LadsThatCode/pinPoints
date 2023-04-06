@@ -1,12 +1,19 @@
-.container {
+.landing-container{
+  background: url('../public/aboutimg/pinpoint.gif') center/cover no-repeat;
+  height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
 }
 
+
+/* 
 .circle {
   display: flex;
-  justify-content: center; /* centers the content horizontally */
+  justify-content: center; 
   align-items: center;
   width: 500px;
   height: 500px;
@@ -55,6 +62,21 @@
   background-color:#000000;
 }
 
-.circle-img{
-  z-index: 1;
+.containerpinpoint{
+  z-index: 2;
+  background-image: url(../public/aboutimg/pinpoint.gif);
+  transform: scaleX(-1);
+  background-repeat: no-repeat;
+
 }
+
+.container{
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  height: 150vh;
+  color:rgb(172, 31, 31);
+  font-weight: 1000;
+  
+}  */
