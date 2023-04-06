@@ -9,7 +9,7 @@ class LocationForm extends React.Component {
     this.state = {
       id: this.props.locationToBeUpdated?._id,
       v: this.props.locationToBeUpdated?.__v,
-      city: this.props.locationToBeUpdated?.city,
+      city: this.props.locationToBeUpdated?.name,
       lat: this.props.locationToBeUpdated?.lat,
       lng: this.props.locationToBeUpdated?.lng,
       method: this.props.locationToBeUpdated ? 'put' : 'post',

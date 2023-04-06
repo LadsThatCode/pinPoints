@@ -72,7 +72,7 @@ export function Earth(props) {
           headers: { "Authorization": `Bearer ${jwt}` },
           method: 'get',
           baseURL: process.env.REACT_APP_SERVER,
-          url: '/cities'
+          url: '/my-cities'
         };
 
         try {
@@ -140,6 +140,23 @@ export function Earth(props) {
     }
   };
 
+  // const postLocation = async (id) => {
+  //   try{
+  //     const token = await getIdTokenClaims();
+  //     const url = `${process.env.REACT_APP_SERVER}/search/${id._id}`;
+  //     const config = {
+  //       headers: { "Authorization": `Bearer ${token}` },
+  //       method: 'post',
+  //       data: id,
+  //       url: url
+  //     };
+  //     const createdLocation = await axios(config);
+  //     console.log(config)
+  //     setSelectedLocation([...locations, createdLocation.data]);
+  //   }catch(error){
+  //     console.log(error.message)
+  //   }
+  // }
 
 
 
@@ -211,11 +228,12 @@ export function Earth(props) {
   return (
     <>
       <Html>
-        <LocationForm
+        {showModal ? <LocationForm
           showModal={setShowModal}
           updateLocation={updateLocation}
           handleCloseModal={handleCloseModal}
-        />
+          postLocation={updateLocation}
+        /> : null}
       </Html>
 
       [//! handles search bar]
@@ -292,8 +310,9 @@ export function Earth(props) {
         {selectedLocation && (
           <Html>
 
-            <section id="locationContainer">
+            <section id="locationContainer" key={selectedLocation.name}>
               <div id="locationInfo">
+                <div>X</div>
                 <h3 id="pinName">{selectedLocation.name}</h3>
 
                 <p>Hello this is so cool wow!</p>
@@ -311,7 +330,7 @@ export function Earth(props) {
                 <p>some words</p>
 
                 {<Button onClick={handleOpenModal}>Add New Location</Button>}
-                {<Button>Update location</Button>}
+                {<Button onClick={handleOpenModal}>Update location</Button>}
                 <Button onClick={() => { deleteLocation(selectedLocation._id) }}>Delete</Button>
 
                 {/* display other location data */}
