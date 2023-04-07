@@ -99,19 +99,18 @@ export function Earth(props) {
     if (isAuthenticated) {
       const res = await getIdTokenClaims();
       const jwt = res.__raw;
-      // console.log('token: ', jwt);
+      console.log('token: ', jwt);
 
       const config = {
         headers: { "Authorization": `Bearer ${jwt}` },
         method: 'get',
         baseURL: process.env.REACT_APP_SERVER,
         url: `/search?city=${searchObj}`,
-        // data: searchObj
       };
 
       try {
         const response = await axios(config);
-        // console.log(response.data);
+        console.log(response.data);
         setLocations([...locations, response.data]);
       } catch (error) {
         console.error(error);
@@ -335,6 +334,8 @@ export function Earth(props) {
                       <p>Address: {place.address}</p>
                     </div>
                     <img id="interestImg" src={place.photo_url} alt={place.name} />
+                    <h5>Description</h5>
+                    <p>{place.description}</p>
                   </div>
                 )}
 
