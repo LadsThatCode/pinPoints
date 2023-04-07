@@ -320,7 +320,7 @@ export function Earth(props) {
         {selectedLocation && (
           <Html>
 
-            <section opacity='100' id="locationContainer" key={selectedLocation.name}>
+            <section id="locationContainer" key={selectedLocation.name}>
               <div id="locationInfo">
 
                 <h3 id="pinName">
@@ -328,11 +328,13 @@ export function Earth(props) {
                   {selectedLocation.formatted_address}
                 </h3>
                 {selectedLocation.places_of_interest.map(place => 
-                 <div>
+                 <div id="interestContainer">
+                  <div id='headerContainer'>
                  <h4>{place.name}</h4>
-                 <img id="interestImg" src={place.photo_url} alt={place.name}/>
                  <p>Rating: {place.rating}</p>
                  <p>Address: {place.address}</p>
+                 </div>
+                 <img id="interestImg" src={place.photo_url} alt={place.name}/>
                  </div>
                 )}
 

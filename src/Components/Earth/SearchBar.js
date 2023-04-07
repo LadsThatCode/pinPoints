@@ -23,7 +23,7 @@ console.log(onSearch)
   return (
     <section id='searchBar'>
       <TextField onChange={handleInputChange} id="outlined-basic" label="Enter Location" variant="outlined" />
-      <Button onClick={handleSubmit} variant="contained">Enter</Button>
+      <Button id='searchBarButton' onClick={handleSubmit} variant="contained">Enter</Button>
     </section>
   );
 };

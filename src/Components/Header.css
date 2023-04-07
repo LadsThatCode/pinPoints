@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=League+Spartan:wght@300;400;500;700&display=swap");
+
+
+
+
 .navbar {
   background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
   height: 80px;
@@ -8,9 +13,9 @@
   z-index: 1;
 }
 
-.navbar-container{
+.navbar-container {
   display: flex;
-  justify-content:space-around ;
+  justify-content: space-around;
   width: 100%;
 }
 
@@ -35,15 +40,14 @@
   grid-gap: 90px;
   list-style: none;
   margin-right: auto;
-  margin-top: .6%;
+  margin-top: 0.6%;
   margin-left: 35%;
 }
-.nav-login{
-
-  margin-right: 30px; 
+.nav-login {
+  margin-right: 30px;
   justify-self: end;
   align-items: right;
-  height: 20px; 
+  height: 20px;
 }
 
 .nav-links {

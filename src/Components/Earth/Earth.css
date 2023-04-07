@@ -12,8 +12,17 @@ cursor:pointer ;
 display: flex;
 justify-content: flex-end;
 margin-top: -9px;
-margin-right: -6px;
+margin-left: 730px;
+width: 20px;
 }
+
+#searchBarButton{
+  border-radius: 10px;
+  margin-top: -1px;
+  margin-left: -6px;
+  height: 56px;
+}
+
 
 #searchBar{
 margin-top: -650px;
@@ -22,6 +31,8 @@ background-color: white;
 display: flex;
 width: 450px;
 z-index: 0;
+height: 54px;
+border-radius: 60px;
 }
 
 #outlined-basic{
@@ -44,7 +55,6 @@ z-index: 0;
   overflow-y: scroll;
   position:relative;
   margin-left: auto;
-
   /* margin-right: auto; */
   top: -400px; 
   left: 550px;
@@ -52,11 +62,24 @@ z-index: 0;
 #pinName{
   padding: 10px;
   z-index: 10;
-  background-color: #21b8f3;
+  background-color: #185edf;
   color: #fff;
+  margin-bottom: 40px;
 }
 #locationContainer{
   display: flex;
   word-wrap: break-word;
   height: 0px;
+  justify-content: center;
+  opacity: 100%;
 }
+#interestContainer{
+  border: 2px rgb(28, 27, 27);
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto; 
+  color: white;
+  background-color: #333;
+  margin-bottom: 50px;
+}
+

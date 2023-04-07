@@ -4,6 +4,8 @@ import { Stack } from 'react-bootstrap/';
 import './Home.css';
 
 
+
+
 function Home() {
   return (
     <>
@@ -19,7 +21,7 @@ function Home() {
         </Stack>
           <div className="content-left">
             <h2 className="home-H2">Logging in..</h2>
-            <p className="home-p-tags">You may choose to login or continue without logging in, the choice is yours. At Pinpoint, we understand that your privacy and security are of utmost importance, which is why we use Auth0 for user authentication. Your information is always safe with us. Are you ready to start your journey? Sign up now and start exploring cities with Pinpoint.</p>
+            <p className="home-p-tags">To use the site, you will need to log in as user authentication is required to access the features of the site. At Pinpoint, we prioritize the privacy and security of our users and use Auth0 for user authentication to ensure that your information remains safe with us. To start exploring cities with Pinpoint and access all of the site's features, please sign up and log in.</p>
           </div>
       </div>
     </>
