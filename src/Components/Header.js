@@ -50,7 +50,7 @@ function Header() {
           <li className='nav-item'>
             <NavItem><Link to='/search' className='nav-links' onClick= 
             {closeMobileMenu}>
-              PinpointLocations
+              Pinpoint Locations
               </Link></NavItem>
           </li>
           <li className='nav-item'>
