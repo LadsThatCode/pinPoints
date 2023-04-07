@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
+  z-index: 1;
 }
 
 .navbar-container{
@@ -33,28 +34,10 @@
   grid-template-columns: repeat(5, auto);
   grid-gap: 90px;
   list-style: none;
-  /* text-align: center; */
-  /* width: 350%; */
-  /* justify-content: end; */
   margin-right: auto;
   margin-top: .6%;
   margin-left: 34%;
-  /* margin-bottom: 30px; */
 }
-
-
-/* .nav-item {
-  /* margin-top: px; */
-  /* margin-right: 0px; */
-  /* justify-self: start; */
-  /* align-items: right; */
-  /* height: 70px; */
-/* } */ 
-
-#ul{
-  /* display: flex; */
-}
-
 .nav-login{
 
   margin-right: 30px; 
