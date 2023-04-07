@@ -8,7 +8,6 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Landing from "./Landing.js";
 import Header from "./Components/Header";
 import About from "./About.js";
 import Home from './Components/Home';
