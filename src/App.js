@@ -18,7 +18,7 @@ import Home from './Components/Home';
 
 const CanvasContainer = styled.div`
   width: 100;
-  height: 94svh;
+  height: 93svh;
 `;
 
 class App extends React.Component {
