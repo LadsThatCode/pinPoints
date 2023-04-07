@@ -1,10 +1,10 @@
-html {
-}
 
 #interestImg{
-
-  height: 500px;
+  height: 600px;
   width: 500px;
+  margin-bottom: 10px;
+  border: rgba(0, 0, 0, 0.3) solid 5px;
+  border-radius: 30px;
 }
 
 #divCloseButton{
@@ -17,22 +17,22 @@ width: 20px;
 }
 
 #searchBarButton{
-  border-radius: 10px;
+  /* border-radius: 10px;
   margin-top: -1px;
   margin-left: -6px;
-  height: 56px;
+  height: 56px; */
 }
 
 
 #searchBar{
-margin-top: -650px;
-margin-left: 965px;
+margin-top: -450px;
+margin-left: 720px;
 background-color: white;
 display: flex;
 width: 450px;
 z-index: 0;
-height: 54px;
-border-radius: 60px;
+/* height: 54px; */
+/* border-radius: 20px; */
 }
 
 #outlined-basic{
@@ -40,13 +40,12 @@ border-radius: 60px;
 }
 
 #locationInfo{
-  background-color: #f2f2f2;
+  background-color: rgb(51, 51, 51, .30);
+  border-radius: 30px;
   font-family: Arial, sans-serif;
   font-size: 16px;
   text-align: center;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  color: #333;
   line-height: 1.5;
   margin: 10px;
   width: 800px;
@@ -62,24 +61,26 @@ border-radius: 60px;
 #pinName{
   padding: 10px;
   z-index: 10;
-  background-color: #185edf;
+  background-color: #333;
   color: #fff;
   margin-bottom: 40px;
+  width: 100%;
 }
 #locationContainer{
   display: flex;
   word-wrap: break-word;
   height: 0px;
   justify-content: center;
-  opacity: 100%;
 }
 #interestContainer{
-  border: 2px rgb(28, 27, 27);
+  border: 2px rgb(51, 51, 51,);
+  border-radius: 30px;
   width: 75%;
   margin-left: auto;
   margin-right: auto; 
   color: white;
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.5);
   margin-bottom: 50px;
+  padding: 30px;
 }
 
