@@ -189,7 +189,10 @@ export function Earth(props) {
 
 
 
-
+  const handleClick = () => {
+    let div = document.getElementById('locationContainer')
+    div.style.opacity = '0';
+  }
 
 
   //!! ONCLICK FOR PINPOINTS
@@ -314,24 +317,23 @@ export function Earth(props) {
         {selectedLocation && (
           <Html>
 
-            <section id="locationContainer" key={selectedLocation.name}>
+            <section opacity='100' id="locationContainer" key={selectedLocation.name}>
               <div id="locationInfo">
-                <div>X</div>
-                <h3 id="pinName">{selectedLocation.name}</h3>
 
-                <p>Hello this is so cool wow!</p>
-                <p>this is the third p tag!</p>
-                <p>and this is the Fourth!</p>
-                <p>just testing what tons of data would look like. how about we try some lipsum kdsjhbvkjhberdfkjgvbhndjkfnbvjkdnfvjkfdnvjdfknvdfjknvfjkdnvfdkjnvdfkjhzbjhzbhjasdasdasdasdasdasdsadasdasdasdsaddasdasddddddddddd</p>
-                <p>some words</p>
-                <p>some words</p>
-                <p>some words</p>
-                <p>some words</p>
-                <p>some words</p>
-                <p>some words</p>
-                <p>some words</p>
-                <p>some words</p>
-                <p>some words</p>
+                <h3 id="pinName">
+                  <div id="divCloseButton" onClick={handleClick}>X</div>
+                  {selectedLocation.formatted_address}
+                </h3>
+                {selectedLocation.places_of_interest.map(place => 
+                 <div>
+                 <h2>{`${place.name}`}</h2>
+                 <img src={`${place.photo_url}`} alt={`${place.name}`}/>
+                 <p>Rating: {`${place.rating}`}</p>
+                 <p>Address: {`${place.address}`}</p>
+                 </div>
+                ).join('')}
+
+
 
                 {<Button onClick={handleOpenModal}>Add New Location</Button>}
                 {<Button onClick={handleOpenModal}>Update location</Button>}
