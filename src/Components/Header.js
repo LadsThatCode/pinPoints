@@ -9,6 +9,7 @@ import '@fontsource/roboto/700.css';
 import Profile from "./Profile";
 import './Header.css';
 import { useAuth0 } from "@auth0/auth0-react";
+
 function Header() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -49,7 +50,7 @@ function Header() {
           <li className='nav-item'>
             <NavItem><Link to='/search' className='nav-links' onClick= 
             {closeMobileMenu}>
-              Pinpoint
+              PinpointLocations
               </Link></NavItem>
           </li>
           <li className='nav-item'>
@@ -67,7 +68,9 @@ function Header() {
         </ul>
         {!isAuthenticated &&
             button && (
-              <Button buttonStyle="btn--outline">Log-In</Button>
+
+              <Button buttonStyle="btn--large:hover">Log-In</Button>
+
             )}
         <Profile/>
       </div>

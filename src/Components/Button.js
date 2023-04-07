@@ -1,6 +1,6 @@
 import React from "react";
 import './Button.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Styles = ['btn--primary', 'btn--outline']
 
@@ -18,15 +18,15 @@ export const Button = ({
   return (
     <>
 
-          <Link to='/search' className='btn--medium:hover'>
-          <button
-            className={`btn ${checkButtonStyle} ${checkButtonSize}`}
-            onClick={onClick}
-            type={type}
-            >
-              Pin Now!
-            </button>
-        </Link>
-        </>
+      <Link to='/search' className='btn--medium:hover'>
+        <button
+          className={`btn ${checkButtonStyle} ${checkButtonSize}`}
+          onClick={onClick}
+          type={type}
+        >
+          Pin Now!
+        </button>
+      </Link>
+    </>
   );
 };

@@ -3,11 +3,14 @@ import '../App.css';
 import { Stack } from 'react-bootstrap/';
 import './Home.css';
 
+
 function Home() {
   return (
     <>
-      <div className="circle" />
-      <div className="container">
+      <div className="video-container">
+        <video src='/aboutimg/video-2.mp4' autoPlay loop muted/>
+      </div>
+      <div className="content-container">
         <Stack direction="horizontal" gap={3}>
           <div className="content-left">
             <h2 className="home-H2">Logging in..</h2>
