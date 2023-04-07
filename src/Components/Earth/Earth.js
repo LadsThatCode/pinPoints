@@ -70,7 +70,7 @@ export function Earth(props) {
       if (isAuthenticated) {
         const res = await getIdTokenClaims();
         const jwt = res.__raw;
-        console.log('token: ', jwt);
+        // console.log('token: ', jwt);
 
         const config = {
           headers: { "Authorization": `Bearer ${jwt}` },
@@ -81,7 +81,7 @@ export function Earth(props) {
 
         try {
           const response = await axios(config);
-          console.log(response.data);
+          // console.log(response.data);
           setLocations(response.data);
 
         } catch (error) {
@@ -95,11 +95,11 @@ export function Earth(props) {
 
 
   const getNewLocation = async (searchObj) => {
-    console.log(`I am the search Obj ${searchObj}`)
+    // console.log(`I am the search Obj ${searchObj}`)
     if (isAuthenticated) {
       const res = await getIdTokenClaims();
       const jwt = res.__raw;
-      console.log('token: ', jwt);
+      // console.log('token: ', jwt);
 
       const config = {
         headers: { "Authorization": `Bearer ${jwt}` },
@@ -111,7 +111,7 @@ export function Earth(props) {
 
       try {
         const response = await axios(config);
-        console.log(response.data);
+        // console.log(response.data);
         setLocations([...locations, response.data]);
       } catch (error) {
         console.error(error);
@@ -148,9 +148,9 @@ export function Earth(props) {
     console.log(locationObj)
     try {
       const token = await getIdTokenClaims();
-      console.log(token)
+      // console.log(token)
       const url = `${process.env.REACT_APP_SERVER}/search?city=${locationObj.city}`;
-      console.log(url)
+      // console.log(url)
       const config = {
         headers: { "Authorization": `Bearer ${token}` },
         method: 'get',
@@ -158,7 +158,7 @@ export function Earth(props) {
         url: url
       };
       const createdLocation = await axios(config);
-      console.log(config)
+      // console.log(config)
       setSelectedLocation([...locations, createdLocation.data]);
     } catch (error) {
       console.log(error.message)
@@ -203,7 +203,7 @@ export function Earth(props) {
   const handleMeshClick = (location) => {
     setSelectedLocation(location);
   };
-  console.log(selectedLocation)
+  // console.log(selectedLocation)
 
 
   //! dynamically aquires sphere cordinates based on lat and negitive lon
