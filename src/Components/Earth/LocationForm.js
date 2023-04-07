@@ -17,14 +17,20 @@ class LocationForm extends React.Component {
   }
 
   handleFormSubit = (event) => {
+    console.log(event);
+    event.preventDefault();
     let locationObj = {
       city: event.target.name.value,
       lat: event.target.lat.value,
-      lng: event.target.lon.value
+      lng: event.target.lon.value,
+    
     }
+    console.log(this.state.method)
     if (this.state.method === 'put') {
+      console.log('put method')
       this.props.updateLocation(locationObj)
     } else {
+      console.log('else block')
       this.props.postLocation(locationObj);
     }
     this.props.handleCloseModal();

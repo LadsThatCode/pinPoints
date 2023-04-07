@@ -8,14 +8,13 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Profile from "./Profile";
 import './Header.css';
-
+import { useAuth0 } from "@auth0/auth0-react";
 function Header() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
-
+  const { isAuthenticated } = useAuth0();
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
-
   const showButton = () => {
     if (window.innerWidth <= 960){
       setButton(false);
@@ -23,14 +22,11 @@ function Header() {
       setButton(true);
     }
     };
-
     useEffect(() => {
       showButton();
     }, []);
-
     window.addEventListener('resize', showButton);
   
-
   return (
     <>
     <nav className='navbar'>
@@ -69,32 +65,15 @@ function Header() {
               </Link></NavItem>
           </li>
         </ul>
-        {button && <Button buttonStyle='btn--outline'>Log-In</Button>}
+        {!isAuthenticated &&
+            button && (
+              <Button buttonStyle="btn--outline">Log-In</Button>
+            )}
         <Profile/>
       </div>
     </nav>
     </>
   )
 }
-
-
-// class Header extends React.Component {
-//   render() {
-//     return (
-//       <Navbar id='navBar' collapseOnSelect expand="lg" bg="light" variant="light">
-//         <Navbar.Brand><Link to="/" className="nav-link"><Button>Pinpoint</Button></Link></Navbar.Brand>
-
-//         <NavItem><Link to="/about" className="nav-link"><Button>About</Button></Link></NavItem>
-
-//         <NavItem><Link to="/home" className="nav-link"><Button>Home</Button></Link></NavItem>
-
-//         <NavItem><Link to="/search" className="nav-link"><Button>Pins</Button></Link></NavItem>
-
-//         <Profile />
-//       </Navbar>
-                
-//     )
-//   }
-// }
 
 export default Header;

@@ -144,23 +144,26 @@ export function Earth(props) {
     }
   };
 
-  // const postLocation = async (id) => {
-  //   try{
-  //     const token = await getIdTokenClaims();
-  //     const url = `${process.env.REACT_APP_SERVER}/search/${id._id}`;
-  //     const config = {
-  //       headers: { "Authorization": `Bearer ${token}` },
-  //       method: 'post',
-  //       data: id,
-  //       url: url
-  //     };
-  //     const createdLocation = await axios(config);
-  //     console.log(config)
-  //     setSelectedLocation([...locations, createdLocation.data]);
-  //   }catch(error){
-  //     console.log(error.message)
-  //   }
-  // }
+  const postLocation = async (locationObj) => {
+    console.log(locationObj)
+    try{
+      const token = await getIdTokenClaims();
+      console.log(token)
+      const url = `${process.env.REACT_APP_SERVER}/search?city=${locationObj.city}`;
+      console.log(url)
+      const config = {
+        headers: { "Authorization": `Bearer ${token}` },
+        method: 'get',
+        // data: locationObj,
+        url: url
+      };
+      const createdLocation = await axios(config);
+      console.log(config)
+      setSelectedLocation([...locations, createdLocation.data]);
+    }catch(error){
+      console.log(error.message)
+    }
+  }
 
 
 
@@ -239,7 +242,7 @@ export function Earth(props) {
           showModal={setShowModal}
           updateLocation={updateLocation}
           handleCloseModal={handleCloseModal}
-          postLocation={updateLocation}
+          postLocation={postLocation}
         /> : null}
       </Html>
 
@@ -326,12 +329,12 @@ export function Earth(props) {
                 </h3>
                 {selectedLocation.places_of_interest.map(place => 
                  <div>
-                 <h2>{`${place.name}`}</h2>
-                 <img src={`${place.photo_url}`} alt={`${place.name}`}/>
-                 <p>Rating: {`${place.rating}`}</p>
-                 <p>Address: {`${place.address}`}</p>
+                 <h4>{place.name}</h4>
+                 <img src={place.photo_url} alt={place.name}/>
+                 <p>Rating: {place.rating}</p>
+                 <p>Address: {place.address}</p>
                  </div>
-                ).join('')}
+                )}
 
 
 
