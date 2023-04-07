@@ -17,7 +17,7 @@ const Profile = () => {
           <p id="profileP">{user.email}</p>
         </div>
         <div id="imagecontainer">
-          <img id="userpicture" src={user.picture} />
+          <img id="userpicture" src={user.picture} alt="This is the user" />
         </div>
       </div>
     )

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, NavItem } from 'react-bootstrap';
+import { NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import '@fontsource/roboto/300.css';

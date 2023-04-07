@@ -15,7 +15,7 @@ console.log(onSearch)
   };
 
   const handleSubmit = () => {
-   
+
     // if (searchTerm.trim()) {
       onSearch(searchTerm);
   };
