@@ -11,7 +11,8 @@ import {
 import Landing from "./Landing.js";
 import Header from "./Components/Header";
 import About from "./About.js";
-// import Container from 'react-bootstrap/Container';
+import Home from './Components/Home';
+
 
 
 
@@ -29,6 +30,7 @@ class App extends React.Component {
 
 
         <Routes>
+        <Route exact path="/home" element={<Home />} />
           <Route exact path="/about" element={<About />} />
           <Route
             exact path="/"
