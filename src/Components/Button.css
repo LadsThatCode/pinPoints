@@ -1,5 +1,5 @@
 :root {
-  --primary: rgb(182, 24, 24);
+  --primary: rgb(253, 0, 0);
 }
 
 .btn {
@@ -35,7 +35,7 @@
 }
 
 .btn--medium:hover, .btn--large:hover {
-  background: rgb(252, 27, 27);
-  color:rgb(189, 10, 10);
+  background: rgb(216, 38, 38);
+  color:rgb(255, 255, 255);
   transition: all 0.3s ease-out;
 }
