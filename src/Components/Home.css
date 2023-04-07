@@ -1,3 +1,6 @@
+html{
+  zoom: 75%;
+}
 
 .video-container {
   position: fixed;
