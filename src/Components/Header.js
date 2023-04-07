@@ -68,7 +68,9 @@ function Header() {
         </ul>
         {!isAuthenticated &&
             button && (
+
               <Button buttonStyle="btn--large:hover">Log-In</Button>
+
             )}
         <Profile/>
       </div>
@@ -76,4 +78,5 @@ function Header() {
     </>
   )
 }
+
 export default Header;

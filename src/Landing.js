@@ -13,8 +13,10 @@ function LandingSection(){
       <h1>Find your next destination</h1>
       <p>Try Pinpoints NOW</p>
       <div className='landing-btns'>
+
         <Button className='btns' buttonStyle='btn--medium:hover'
-        buttonSize='btn--medium:hover'></Button>
+        buttonSize='btn--large'>Pin it!</Button>
+
       </div>
     </div>
   )
