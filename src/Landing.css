@@ -1,6 +1,6 @@
 .landing-container{
   background: url('../public/aboutimg/pinpoint.gif') center/cover no-repeat;
-  height: 100vh;
+  height: 94.3%; /*   Set to Andrews screen height    */
   width: 100%;
   display: flex;
   flex-direction: column;

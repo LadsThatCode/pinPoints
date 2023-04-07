@@ -1,7 +1,13 @@
 html {
 }
 
-
+#divCloseButton{
+cursor:pointer ;
+display: flex;
+justify-content: flex-end;
+margin-top: -9px;
+margin-right: -6px;
+}
 
 #searchBar{
 margin-top: -230px;
@@ -10,7 +16,6 @@ z-index: 1;
 
 #locationInfo{
   background-color: #f2f2f2;
-  padding: 20px;
   font-family: Arial, sans-serif;
   font-size: 16px;
   text-align: center;
@@ -27,7 +32,7 @@ z-index: 1;
   margin-left: auto;
 
   /* margin-right: auto; */
-  top: -550px; 
+  top: -250px; 
   left: 850px;
 }
 #pinName{

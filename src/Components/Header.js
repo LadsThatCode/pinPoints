@@ -43,7 +43,7 @@ function Header() {
         <div className='menu-icon' onClick={handleClick}>
           <i className={click ? 'fa fa-times' : 'fa fa-bars'}/>
         </div>
-        <ul className={click ? 'nav-menu active': 'nav-menu'}>
+        <ul id='ul' className={click ? 'nav-menu active': 'nav-menu'}>
           <li className='nav-item'>
             <Link to='/home' className='nav-links' onClick= 
             {closeMobileMenu}>
@@ -62,7 +62,7 @@ function Header() {
               About
               </Link></NavItem>
           </li>
-          <li className='nav-login'>
+          <li className='nav-item'>
           <NavItem><Link to='/log-in' className='nav-links-mobile' onClick= 
             {closeMobileMenu}>
               Log-In
