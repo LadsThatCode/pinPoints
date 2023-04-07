@@ -11,7 +11,7 @@ function LandingSection(){
     <div className='landing-container'>
       
       <h1>Find your next destination</h1>
-      <p>Try Pinpoints NOW</p>
+      
       <div className='landing-btns'>
 
         <Button className='btns' buttonStyle='btn--medium:hover'
