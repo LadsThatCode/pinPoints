@@ -1,28 +1,33 @@
 .profile {
  display: flex;
- justify-content: flex-end;
- border: 5px solid green;
+ justify-content: center;
+ /* border: 5px solid green; */
+ margin-right: 1%;
+ width: 400px;
+ color: white;
 }
 
 #userpicture {
-  height: 50px;
-  margin-left: 15%;
-  border-color: red;
+  height: 60px;
+  margin-left: 80% ;
 }
 
 #usertextcontainer {
   margin-left: 5%;
   font-size :small;
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
 }
 #profileH2 {
   margin-bottom: 0px ;
   width: max-content;
-  border: 1px solid green;
+  
   
 }
-/* #imagecontainer{} */
+
 #profileP{
-  display: block;
+  width: min-content;
   margin-bottom: 0px ;
-  border: 1px solid green;
+  text-align: center;
 }
