@@ -10,9 +10,6 @@ import Profile from './Profile';
 import './Header.css';
 import { useAuth0 } from '@auth0/auth0-react';
 
-
-
-
 function Header() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -30,6 +27,7 @@ function Header() {
     showButton();
   }, []);
   window.addEventListener('resize', showButton);
+
   return (
     <>
       <nav className='navbar'>
@@ -43,30 +41,48 @@ function Header() {
             <i className={click ? 'fa fa-times' : 'fa fa-bars'} />
           </div>
           <ul id='ul' className={click ? 'nav-menu active' : 'nav-menu'}>
-          <li className='nav-item'>
-            <Link to='/' className='nav-links' onClick= 
-            {closeMobileMenu}>
-              Home
+            <li className='nav-item'>
+              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                Home
               </Link>
-          </li>
-          <li className='nav-item'>
-            <NavItem><Link to='/search' className='nav-links' onClick= 
-            {closeMobileMenu}>
-              Pinpoint Locations
-              </Link></NavItem>
-          </li>
-          <li className='nav-item'>
-            <NavItem><Link to='/about' className='nav-links' onClick= 
-            {closeMobileMenu}>
-              About
-              </Link></NavItem>
-          </li>
-          <li className='nav-item'>
-          <NavItem><Link to='/log-in' className='nav-links-mobile' onClick= 
-            {closeMobileMenu}>
-              Log-In
-              </Link></NavItem>
-          </li>
+            </li>
+            {isAuthenticated && (
+              <li className='nav-item'>
+                <NavItem>
+                  <Link
+                    to='/search'
+                    className='nav-links'
+                    onClick={closeMobileMenu}
+                  >
+                    Pinpoint Locations
+                  </Link>
+                </NavItem>
+              </li>
+            )}
+            <li className='nav-item'>
+              <NavItem>
+                <Link
+                  to='/about'
+                  className='nav-links'
+                  onClick={closeMobileMenu}
+                >
+                  About
+                </Link>
+              </NavItem>
+            </li>
+            {!isAuthenticated && (
+              <li className='nav-item'>
+                <NavItem>
+                  <Link
+                    to='/log-in'
+                    className='nav-links-mobile'
+                    onClick={closeMobileMenu}
+                  >
+                    Log-In
+                  </Link>
+                </NavItem>
+              </li>
+            )}
           </ul>
           {isAuthenticated ? (
             <Button
@@ -98,4 +114,5 @@ function Header() {
     </>
   );
 }
+
 export default Header;
