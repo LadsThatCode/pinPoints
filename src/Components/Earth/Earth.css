@@ -1,6 +1,12 @@
 html {
 }
 
+#interestImg{
+
+  height: 500px;
+  width: 500px;
+}
+
 #divCloseButton{
 cursor:pointer ;
 display: flex;
@@ -10,8 +16,16 @@ margin-right: -6px;
 }
 
 #searchBar{
-margin-top: -230px;
-z-index: 1;
+margin-top: -650px;
+margin-left: 965px;
+background-color: white;
+display: flex;
+width: 450px;
+z-index: 0;
+}
+
+#outlined-basic{
+  width: 350px !important;
 }
 
 #locationInfo{
@@ -24,16 +38,16 @@ z-index: 1;
   color: #333;
   line-height: 1.5;
   margin: 10px;
-  width: 400px;
-  height: 400px;
+  width: 800px;
+  height: 800px;
   overflow-x: hidden;
   overflow-y: scroll;
   position:relative;
   margin-left: auto;
 
   /* margin-right: auto; */
-  top: -250px; 
-  left: 850px;
+  top: -400px; 
+  left: 550px;
 }
 #pinName{
   padding: 10px;

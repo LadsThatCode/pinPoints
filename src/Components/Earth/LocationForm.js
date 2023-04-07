@@ -40,6 +40,7 @@ class LocationForm extends React.Component {
 
   render() {
     return <Modal
+    id='modal'
       show={this.props.showModal}
       onHide={this.props.handleCloseModal}
 

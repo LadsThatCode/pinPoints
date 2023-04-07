@@ -40,7 +40,7 @@ function Header() {
           </div>
           <ul id='ul' className={click ? 'nav-menu active' : 'nav-menu'}>
           <li className='nav-item'>
-            <Link to='/home' className='nav-links' onClick= 
+            <Link to='/' className='nav-links' onClick= 
             {closeMobileMenu}>
               Home
               </Link>
@@ -48,7 +48,7 @@ function Header() {
           <li className='nav-item'>
             <NavItem><Link to='/search' className='nav-links' onClick= 
             {closeMobileMenu}>
-              PinpointLocations
+              Pinpoint Locations
               </Link></NavItem>
           </li>
           <li className='nav-item'>

@@ -237,6 +237,11 @@ export function Earth(props) {
   });
   return (
     <>
+        <Html>
+  
+          <SearchBar id='searchBar' onSearch={getNewLocation} />
+  
+        </Html>
       <Html>
         {showModal ? <LocationForm
           showModal={setShowModal}
@@ -247,11 +252,6 @@ export function Earth(props) {
       </Html>
 
       [//! handles search bar]
-      <Html>
-
-        <SearchBar id='searchBar' onSearch={getNewLocation} />
-
-      </Html>
       [//! Rotational AMBIET LIGHTING AND STARS]
       <ambientLight intensity={.5} />
       <pointLight color="#f6f3ea" position={[10, 10, 0]} intensity={2.2} />
@@ -330,7 +330,7 @@ export function Earth(props) {
                 {selectedLocation.places_of_interest.map(place => 
                  <div>
                  <h4>{place.name}</h4>
-                 <img src={place.photo_url} alt={place.name}/>
+                 <img id="interestImg" src={place.photo_url} alt={place.name}/>
                  <p>Rating: {place.rating}</p>
                  <p>Address: {place.address}</p>
                  </div>
