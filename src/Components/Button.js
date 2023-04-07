@@ -18,7 +18,7 @@ export const Button = ({
   return (
     <>
 
-          <Link to='/search' className='btn-mobile'>
+          <Link to='/search' className='btn--medium:hover'>
           <button
             className={`btn ${checkButtonStyle} ${checkButtonSize}`}
             onClick={onClick}

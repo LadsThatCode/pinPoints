@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Button } from './Components/Button';
 import './Landing.css';
+import './Components/Button.css'
 
 
 
@@ -13,7 +14,7 @@ function LandingSection(){
       <p>Try Pinpoints NOW</p>
       <div className='landing-btns'>
         <Button className='btns' buttonStyle='btn--outline'
-        buttonSize='btn--large'>Pin it!</Button>
+        buttonSize='btn--large'></Button>
       </div>
     </div>
   )
