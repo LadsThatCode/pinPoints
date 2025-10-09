@@ -7,6 +7,14 @@
   - Update: Users can update their activity suggestions by editing the description, location, or other details.
   - Delete: Users can delete their activity suggestions if they are no longer interested in them.
 
+## In app images 
+<img width="1906" height="847" alt="Screenshot 2025-10-09 110900" src="https://github.com/user-attachments/assets/d97e9828-d71a-4571-872d-2556d238e57a" />
+<img width="1909" height="889" alt="Screenshot 2025-10-09 110840" src="https://github.com/user-attachments/assets/85910d27-84a9-4ac9-a278-2791336354be" />
+<img width="1886" height="905" alt="Screenshot 2025-10-09 110935" src="https://github.com/user-attachments/assets/dcc706b1-d8e7-4286-84b5-de9036815134" />
+<img width="1707" height="810" alt="Screenshot 2025-10-09 111002" src="https://github.com/user-attachments/assets/825fc95b-5086-4f56-8efc-9c6a8d297e0f" />
+
+
+
 ## Wireframes
 
 ![Pinpoint_Wireframe_Home](https://user-images.githubusercontent.com/81731210/229587616-8d084a11-ff1f-4f1d-b37d-20d7f79c9f4b.png)
